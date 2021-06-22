@@ -40,8 +40,8 @@ def post(request):
         item = result[0]
         return JsonResponse({'type': type, 'tag': tag, 'link': f'{REQUEST_URL}api/file/{item.file.name}'})
     if len(result) > 1:
-        index = random.randint(0, len(result))
-        item = result[index - 1]
+        index = random.randint(0, len(result)-1)
+        item = result[index]
         return JsonResponse({'type': type, 'tag': tag, 'link': f'{REQUEST_URL}api/file/{item.file.name}'})
 
     return Response({'error': 'no_results'})
